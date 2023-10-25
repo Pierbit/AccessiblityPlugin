@@ -8,6 +8,8 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlTag;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class AudioVideoAltInspection extends LocalInspectionTool {
 
     @Override
@@ -16,23 +18,42 @@ public class AudioVideoAltInspection extends LocalInspectionTool {
             @Override
             public void visitXmlTag(XmlTag tag) {
                 super.visitXmlTag(tag);
-                System.out.println("Visiting XML tag: " + tag.getName());
 
-                if (tag.getName().equalsIgnoreCase("TextView")) {
+                if (tag.getName().equalsIgnoreCase("ImageView")) {
                     XmlAttribute @NotNull [] attributi = tag.getAttributes();
 
-                    boolean flag = false;
+                    boolean contentDescriptionFlag = false;
+                    boolean focusableFlag = false;
+                    boolean screenReaderFocusableFlag = false;
 
-                    for (XmlAttribute attribute : attributi) {
-                        if (attribute.getName().equalsIgnoreCase("android:text")) {
-                            if (!(attribute.getValue().equalsIgnoreCase(""))) {
-                                flag = true;
+                    for(XmlAttribute attribute : attributi) {
+
+                        if (attribute.getName().equalsIgnoreCase("android:contentDescription")) {
+                            if (!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase(""))) {
+                                contentDescriptionFlag = true;
+                            }
+                        }
+                        if(attribute.getName().equalsIgnoreCase("android:focusable")){
+                            if(attribute.getValue() != null){
+                                if(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase("true")){
+                                    focusableFlag = true;
+                                }
+                            }
+                        }
+                        if(attribute.getName().equalsIgnoreCase("android:screenReaderFocusable")){
+                            if(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase("yes")){
+                                screenReaderFocusableFlag = true;
                             }
                         }
                     }
-
-                    if (!flag) {
-                        holder.registerProblem(tag, "TextView dovrebbe sempre definire del testo!");
+                    if (!contentDescriptionFlag) {
+                        holder.registerProblem(tag, "ContentDescription for imageView missing or empty");
+                    } else if(!focusableFlag && !screenReaderFocusableFlag){
+                        holder.registerProblem(tag, "ContentDescription cannot be focused and will not be announced, define android:focusable and android:screenReaderFocusable or set them to true/yes");
+                    } else if(focusableFlag && !screenReaderFocusableFlag){
+                        holder.registerProblem(tag, "ContentDescription can be focused but its content will not be announced, define android:screenReaderFocusable or set it to'yes'");
+                    } else if(!focusableFlag){
+                        holder.registerProblem(tag, "ContentDescription cannot be focused, define android:focusable or set it to 'true'");
                     }
                 }
             }
