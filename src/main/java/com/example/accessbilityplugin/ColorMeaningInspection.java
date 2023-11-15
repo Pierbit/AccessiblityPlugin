@@ -21,7 +21,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
 
                 if (tag.getName().equalsIgnoreCase("ImageView")) {
                     XmlAttribute @NotNull [] attributi = tag.getAttributes();
-
+                    String cecceccio = "cazzi";
                     boolean contentDescriptionFlag = false;
 
 

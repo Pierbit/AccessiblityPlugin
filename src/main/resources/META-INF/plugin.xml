@@ -23,8 +23,8 @@
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
   <extensions defaultExtensionNs="com.intellij">
     <localInspection implementationClass="com.example.accessbilityplugin.ColorMeaningInspection"
-                     displayName="Contenuti alternativi per audio/video"
-                     groupName="Contenuti alternativi per audio/video"
+                     displayName="Color and meaning inspection"
+                     groupName="Color and meaning inspection"
                      language="XML"/>
   </extensions>
 </idea-plugin>
