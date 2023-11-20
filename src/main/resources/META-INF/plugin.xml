@@ -26,5 +26,10 @@
                      displayName="Color and meaning inspection"
                      groupName="Color and meaning inspection"
                      language="XML"/>
+    <localInspection implementationClass="com.example.accessbilityplugin.ColorContrastInspection"
+                     displayName="Color contrast inspection"
+                     groupName="Color contrast inspection"
+                     language="XML"/>
   </extensions>
+
 </idea-plugin>

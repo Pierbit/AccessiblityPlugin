@@ -8,6 +8,7 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlTag;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class ColorMeaningInspection extends LocalInspectionTool {
@@ -21,8 +22,8 @@ public class ColorMeaningInspection extends LocalInspectionTool {
 
                 if (tag.getName().equalsIgnoreCase("ImageView")) {
                     XmlAttribute @NotNull [] attributi = tag.getAttributes();
-                    String cecceccio = "cazzi";
                     boolean contentDescriptionFlag = false;
+
 
 
                     for(XmlAttribute attribute : attributi) {
