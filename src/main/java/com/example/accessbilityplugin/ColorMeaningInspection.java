@@ -1,6 +1,7 @@
 package com.example.accessbilityplugin;
 
 import com.intellij.codeInspection.LocalInspectionTool;
+import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.XmlElementVisitor;
@@ -25,7 +26,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString = tag.getAttributeValue("android:contentDescription");
 
                     if(testString == null || testString.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for imageView missing or empty");
+                        holder.registerProblem(tag, "ContentDescription for imageView missing or empty", ProblemHighlightType.ERROR);
                     }
                 }
 
@@ -34,7 +35,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString = tag.getAttributeValue("android:contentDescription");
 
                     if(testString == null || testString.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for videoView missing or empty");
+                        holder.registerProblem(tag, "ContentDescription for videoView missing or empty", ProblemHighlightType.ERROR);
                     }
 
                 }
@@ -48,7 +49,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                         holder.registerProblem(tag, "Hint for EditText missing or empty");
                     }
                     if(testString2 == null || testString2.isEmpty()){
-                        holder.registerProblem(tag, "Focusable attribute for EditText missing or empty");
+                        holder.registerProblem(tag, "Focusable attribute for EditText missing or empty", ProblemHighlightType.ERROR);
                     }
 
                 }
@@ -59,10 +60,10 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString2 = tag.getAttributeValue("android:focusable");
 
                     if(testString1 == null || testString1.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for button missing or empty");
+                        holder.registerProblem(tag, "ContentDescription for button missing or empty", ProblemHighlightType.ERROR);
                     }
                     if(testString2 == null || testString2.isEmpty()){
-                        holder.registerProblem(tag, "Focusable attribute for button missing or empty");
+                        holder.registerProblem(tag, "Focusable attribute for button missing or empty", ProblemHighlightType.ERROR);
                     }
                 }
             }

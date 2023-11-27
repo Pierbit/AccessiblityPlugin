@@ -30,6 +30,14 @@
                      displayName="Color contrast inspection"
                      groupName="Color contrast inspection"
                      language="XML"/>
+    <localInspection implementationClass="com.example.accessbilityplugin.LabelsInspection"
+                     displayName="Labels inspection"
+                     groupName="Labels inspection"
+                     language="XML"/>
+    <localInspection implementationClass="com.example.accessbilityplugin.TouchTargetInspection"
+                     displayName="Touch target inspection"
+                     groupName="Touch target inspection"
+                     language="XML"/>
   </extensions>
 
 </idea-plugin>

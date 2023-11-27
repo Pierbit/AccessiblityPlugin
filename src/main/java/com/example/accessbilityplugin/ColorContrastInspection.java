@@ -83,9 +83,6 @@ public class ColorContrastInspection extends LocalInspectionTool {
             }
         }
 
-        System.out.println(checkContrastFlag1 + "");
-        System.out.println(checkContrastFlag2 + "");
-
         if (checkContrastFlag1 && checkContrastFlag2) {
 
             result = checkContrast(foreground, background);
@@ -100,10 +97,6 @@ public class ColorContrastInspection extends LocalInspectionTool {
         ArrayList<Double> relativeLuminances = new ArrayList<>();
         colori.add(colore1);
         colori.add(colore2);
-
-        System.out.println(colori.get(0).getRed() + "");
-        System.out.println(colori.get(0).getBlue() + "");
-        System.out.println(colori.get(0).getGreen() + "");
 
         for (Color colore : colori) {
 
