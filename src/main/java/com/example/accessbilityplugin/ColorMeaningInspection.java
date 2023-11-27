@@ -21,94 +21,48 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                 super.visitXmlTag(tag);
 
                 if (tag.getName().equalsIgnoreCase("ImageView")) {
-                    XmlAttribute @NotNull [] attributi = tag.getAttributes();
-                    boolean contentDescriptionFlag = false;
 
+                    String testString = tag.getAttributeValue("android:contentDescription");
 
-
-                    for(XmlAttribute attribute : attributi) {
-
-                        if (attribute.getName().equalsIgnoreCase("android:contentDescription")) {
-                            if (!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase(""))) {
-                                contentDescriptionFlag = true;
-                            }
-                        }
-                    }
-                    if (!contentDescriptionFlag) {
+                    if(testString == null || testString.isEmpty()){
                         holder.registerProblem(tag, "ContentDescription for imageView missing or empty");
                     }
                 }
 
                 if(tag.getName().equalsIgnoreCase("VideoView")){
 
-                    XmlAttribute @NotNull [] attributi = tag.getAttributes();
-                    boolean contentDescriptionFlag = false;
+                    String testString = tag.getAttributeValue("android:contentDescription");
 
-                    for(XmlAttribute attribute : attributi) {
+                    if(testString == null || testString.isEmpty()){
+                        holder.registerProblem(tag, "ContentDescription for videoView missing or empty");
+                    }
 
-                        if (attribute.getName().equalsIgnoreCase("android:contentDescription")) {
-                            if (!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase(""))) {
-                                contentDescriptionFlag = true;
-                            }
-                        }
-                    }
-                    if (!contentDescriptionFlag) {
-                        holder.registerProblem(tag, "ContentDescription for VideoView missing or empty");
-                    }
                 }
 
                 if(tag.getName().equalsIgnoreCase("EditText")){
 
-                    XmlAttribute @NotNull [] attributi = tag.getAttributes();
-                    boolean hintFlag = false;
-                    boolean focusableFlag = false;
+                    String testString1 = tag.getAttributeValue("android:hint");
+                    String testString2 = tag.getAttributeValue("android:focusable");
 
-                    for(XmlAttribute attribute : attributi) {
+                    if(testString1 == null || testString1.isEmpty()){
+                        holder.registerProblem(tag, "Hint for EditText missing or empty");
+                    }
+                    if(testString2 == null || testString2.isEmpty()){
+                        holder.registerProblem(tag, "Focusable attribute for EditText missing or empty");
+                    }
 
-                        if (attribute.getName().equalsIgnoreCase("android:hint")) {
-                            if (!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase(""))) {
-                                hintFlag = true;
-                            }
-                        }
-
-                        if (attribute.getName().equalsIgnoreCase("android:focusable")){
-                            if(!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase("true"))){
-                                focusableFlag = true;
-                            }
-                        }
-                    }
-                    if (!hintFlag) {
-                        holder.registerProblem(tag, "Hint should be defined for EditText");
-                    }
-                    if(focusableFlag) {
-                        holder.registerProblem(tag, "Focusable attribute should be set to true for every focusable element");
-                    }
                 }
 
                 if(tag.getName().equalsIgnoreCase("Button")){
 
-                    XmlAttribute @NotNull [] attributi = tag.getAttributes();
-                    boolean contentDescriptionFlag = false;
-                    boolean focusableFlag = false;
+                    String testString1 = tag.getAttributeValue("android:contentDescription");
+                    String testString2 = tag.getAttributeValue("android:focusable");
 
-                    for(XmlAttribute attribute : attributi) {
-
-                        if (attribute.getName().equalsIgnoreCase("android:contentDescription")) {
-                            if (!(Objects.requireNonNull(attribute.getValue()).equalsIgnoreCase(""))) {
-                                contentDescriptionFlag = true;
-                            }
-                        }
-                        if (attribute.getName().equalsIgnoreCase("android:focusable")){
-                            if((attribute.getValue().equals("true"))){
-                                focusableFlag = true;
-                            }
-                        }
+                    if(testString1 == null || testString1.isEmpty()){
+                        holder.registerProblem(tag, "ContentDescription for button missing or empty");
                     }
-                    if (!contentDescriptionFlag) {
-                        holder.registerProblem(tag, "ContentDescription should be defined for button");
-                    }
-                    if (!focusableFlag){
-                        holder.registerProblem(tag,"Focusable attribute should be declared and set to true for button");
+                    if(testString2 == null || testString2.isEmpty()){
+                        holder.registerProblem(tag, "Focusable attribute for button missing or empty");
                     }
                 }
             }
