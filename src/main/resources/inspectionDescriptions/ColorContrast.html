@@ -1,24 +1,36 @@
 <html>
 <body>
-Color contrast inspection is an automated inspection to check in xml layout files if color contrast between
-background and textcolor respects the WCAG 2.0 standard of 4.5:1 for non-bold, under 18pt text.
+Color contrast inspection is an inspection that checks in xml layout files if color contrast between
+background and text color respects the WCAG 2.0 standard of 4.5:1 for non-bold, under 18pt text.
 <p>
-    Checks automatically is the colors used in the attributes "android:background" and "android:textColor"
-    respect the WCAG standard, works with hard coded color hex or with references (@colors/xxx).
+    Checks if the colors used in the attributes "android:background" and "android:textColor"
+    respect the WCAG standard, works with hard coded color hex or with references (@color/xxx).
 </p>
 <p>
-    See https://jetbrains.design/intellij/text/inspections/#descriptions for more information.
-</p>
-<p>
-    Embed code snippets:
+    Code examples:
 </p>
 <pre><code>
-// automatically highlighted according to inspection registration 'language' attribute
-</code></pre>
-<!-- tooltip end -->
-<p>Text after this comment will only be shown in the settings of the inspection.</p>
 
-<p>To open related settings directly from the description, add a link with `settings://$` optionally followed by `?$` to
-    pre-select a UI element.</p>
+    <!-- Example 1: Hard-coded colors -->
+    <!--
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" Background color
+    android:textColor="#000000" Text color
+    android:text="This is a sample text"/>
+    -->
+
+    <!-- Example 2: Using color references -->
+    <!--
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" Background color reference
+    android:textColor="@color/black" TextColor reference
+    android:text="This is a sample text."/>
+    -->
+
+</code></pre>
 </body>
 </html>

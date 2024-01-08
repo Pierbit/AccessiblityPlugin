@@ -38,6 +38,10 @@
                      displayName="Touch target inspection"
                      groupName="Touch target inspection"
                      language="XML"/>
+    <localInspection implementationClass="com.example.accessbilityplugin.CustomElemInspection"
+                     displayName="Custom element inspection"
+                     groupName="Custom element inspection"
+                     language="XML"/>
   </extensions>
 
 </idea-plugin>
