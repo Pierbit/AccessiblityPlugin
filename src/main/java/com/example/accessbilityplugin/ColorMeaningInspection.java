@@ -66,6 +66,14 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                         holder.registerProblem(tag, "Focusable attribute for button missing or empty", ProblemHighlightType.ERROR);
                     }
                 }
+
+                if(tag.getName().equalsIgnoreCase("ImageButton")){
+
+                    String test = tag.getAttributeValue("android:contentDescription");
+                    if(test == null || test.isEmpty()){
+                        holder.registerProblem(tag,"ContentDescription for ImageButton missing or empty", ProblemHighlightType.ERROR);
+                    }
+                }
             }
         };
     }

@@ -35,6 +35,10 @@
                      displayName="Auto play inspection"
                      groupName="Auto play inspection"
                      language="JAVA"/>
+    <localInspection implementationClass="com.example.accessbilityplugin.TitleInspection"
+                     displayName="Title inspection"
+                     groupName="Title inspection"
+                     language="XML"/>
   </extensions>
 
 </idea-plugin>
