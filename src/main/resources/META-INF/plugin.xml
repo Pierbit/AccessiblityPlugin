@@ -10,6 +10,13 @@
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.java</depends>
 
+  <actions>
+    <action id="SelectAndReport"
+            class="com.example.accessbilityplugin.SelectAndReportAction"
+            text="Generate accessibility report for selected files">
+    </action>
+  </actions>
+
   <extensions defaultExtensionNs="com.intellij">
     <localInspection implementationClass="com.example.accessbilityplugin.ColorMeaningInspection"
                      displayName="Color and meaning inspection"

@@ -20,6 +20,10 @@ intellij {
   plugins.set(listOf("java"))
 }
 
+dependencies {
+  testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+}
+
 tasks {
   // Set the JVM compatibility versions
   withType<JavaCompile> {

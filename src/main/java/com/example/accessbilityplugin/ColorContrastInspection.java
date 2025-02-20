@@ -111,7 +111,7 @@ public class ColorContrastInspection extends LocalInspectionTool {
 
                         for(XmlTag colore : colori){
                             if(colore.getAttributeValue("name").equalsIgnoreCase(temp1)){
-                                System.out.println(trimColor((colore.getValue().getTrimmedText())));
+                                //System.out.println(trimColor((colore.getValue().getTrimmedText())));
                                 foreground = Color.decode(trimColor(colore.getValue().getTrimmedText()));
                                 checkContrastFlag1 = true;
                             }
@@ -140,7 +140,7 @@ public class ColorContrastInspection extends LocalInspectionTool {
 
                         for(XmlTag colore : colori){
                             if(colore.getAttributeValue("name").equalsIgnoreCase(temp1)){
-                                System.out.println(trimColor((colore.getValue().getTrimmedText())));
+                                //System.out.println(trimColor((colore.getValue().getTrimmedText())));
                                 background = Color.decode(trimColor(colore.getValue().getTrimmedText()));
                                 checkContrastFlag2 = true;
                             }
@@ -172,9 +172,9 @@ public class ColorContrastInspection extends LocalInspectionTool {
             double green = colore.getGreen()/255.0;
             double blue = colore.getBlue()/255.0;
 
-            System.out.println("Red before:"+red);
-            System.out.println("Blue before:"+blue);
-            System.out.println("Green before:"+green);
+            //System.out.println("Red before:"+red);
+            //System.out.println("Blue before:"+blue);
+            //System.out.println("Green before:"+green);
 
             if (red <= 0.03928) red = red / 12.92;
             else red = Math.pow(((red + 0.055) / 1.055), 2.4);
@@ -185,9 +185,9 @@ public class ColorContrastInspection extends LocalInspectionTool {
             if (blue <= 0.03928) blue = blue / 12.92;
             else blue = Math.pow(((blue + 0.055) / 1.055), 2.4);
 
-            System.out.println("Red after:"+red);
-            System.out.println("Blue after:"+blue);
-            System.out.println("green after:"+green);
+            //System.out.println("Red after:"+red);
+            //System.out.println("Blue after:"+blue);
+            //System.out.println("green after:"+green);
 
             relativeLuminances.add((0.2126 * red) + (0.0722 * blue) + (0.7152 * green));
         }
@@ -198,7 +198,7 @@ public class ColorContrastInspection extends LocalInspectionTool {
     public String trimColor(String input){
         String first = input.substring(0,1);
         String second = input.substring(3,9);
-        System.out.println("OUTPUT TRIMCOLOR: "+first+second);
+        //System.out.println("OUTPUT TRIMCOLOR: "+first+second);
         return first+second;
     }
 }
