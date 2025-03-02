@@ -29,7 +29,7 @@ public class ColorContrastInspection extends LocalInspectionTool {
 
                 if (tag.getName().equalsIgnoreCase("Button")) {
                     double result = checkTag(tag);
-                    System.out.println(result);
+                    System.out.println("result contrast:"+result);
                     if (result <= 4.5 && result != -1) {
                         holder.registerProblem(tag,
                                 "Color contrast between text and background does not meet the WCAG standard");
@@ -37,7 +37,7 @@ public class ColorContrastInspection extends LocalInspectionTool {
                 }
                 if (tag.getName().equalsIgnoreCase("EditText")) {
                     double result = checkTag(tag);
-                    System.out.println(result);
+                    System.out.println("result contrast:"+result);
                     if (result <= 4.5 && result != -1) {
                         holder.registerProblem(tag,
                                 "Color contrast between text and background does not meet the WCAG standard");

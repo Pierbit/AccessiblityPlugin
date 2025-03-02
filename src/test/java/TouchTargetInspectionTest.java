@@ -1,5 +1,7 @@
 import com.example.accessbilityplugin.AccessibilityIssue;
+import com.example.accessbilityplugin.ColorContrastInspection;
 import com.example.accessbilityplugin.ColorMeaningInspection;
+import com.example.accessbilityplugin.TouchTargetInspection;
 import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
@@ -8,43 +10,33 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColorMeaningInspectionTest extends LightJavaCodeInsightFixtureTestCase {
+public class TouchTargetInspectionTest extends LightJavaCodeInsightFixtureTestCase {
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        myFixture.setTestDataPath("src/test/testDataColorMeaning");
+        myFixture.setTestDataPath("src/test/testDataTouchTarget");
     }
 
-    public void testColorMeaningInspection(){
+    public void testTouchTargetInspection(){
 
         ArrayList<AccessibilityIssue> risultati = new ArrayList<>();
-        myFixture.enableInspections(new ColorMeaningInspection());
+        myFixture.enableInspections(new TouchTargetInspection());
 
-        inspectFile("ColorMeaningTest1.xml", risultati);
-        inspectFile("ColorMeaningTest2.xml", risultati);
-        inspectFile("ColorMeaningTest3.xml", risultati);
-        inspectFile("ColorMeaningTest4.xml", risultati);
-        inspectFile("ColorMeaningTest5.xml", risultati);
-        inspectFile("ColorMeaningTest6.xml", risultati);
-
-        int focusable_counter = 0;
-        int hint_counter = 0;
-        int content_counter = 0;
+        inspectFile("TouchTargetTest1.xml", risultati);
+        inspectFile("TouchTargetTest2.xml", risultati);
+        inspectFile("TouchTargetTest3.xml", risultati);
+        inspectFile("TouchTargetTest4.xml", risultati);
+        inspectFile("TouchTargetTest5.xml", risultati);
+        inspectFile("TouchTargetTest6.xml", risultati);
+        inspectFile("TouchTargetTest7.xml", risultati);
 
         for(AccessibilityIssue issue: risultati){
-            if(issue.getIssue().contains("Focusable")){
-                focusable_counter++;
-            } else if(issue.getIssue().contains("Hint")){
-                hint_counter++;
-            } else if(issue.getIssue().contains("Content")){
-                content_counter++;
-            }
+            System.out.println(issue.toString());
         }
 
-        assertEquals(14, content_counter);
-        assertEquals(1, hint_counter);
-        assertEquals(11, focusable_counter);
+        assertEquals(14, risultati.size());
+
     }
 
     public void inspectFile(String path, ArrayList<AccessibilityIssue> results){
@@ -52,7 +44,7 @@ public class ColorMeaningInspectionTest extends LightJavaCodeInsightFixtureTestC
         List<HighlightInfo> highlightInfoList = myFixture.doHighlighting();
         for(HighlightInfo h: highlightInfoList){
             if(h.getInspectionToolId() != null) {
-                if (h.getInspectionToolId().equals("ColorMeaning")) {
+                if (h.getInspectionToolId().equals("TouchTarget")) {
                     String description = h.getDescription();
                     String inspectionReference = h.getInspectionToolId();
                     String fileName = myFixture.getFile().getName();
@@ -65,3 +57,4 @@ public class ColorMeaningInspectionTest extends LightJavaCodeInsightFixtureTestC
         }
     }
 }
+

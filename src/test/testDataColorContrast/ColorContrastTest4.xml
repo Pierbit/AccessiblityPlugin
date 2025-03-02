@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
->
+        >
     <View
             android:id="@+id/note_activity_color_strip"
             android:layout_width="wrap_content"
             android:layout_height="?android:actionBarSize"
             android:visibility="gone"
-    />
+            />
 
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:paddingTop="?android:actionBarSize"
             android:clipToPadding="false"
-    >
+            >
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       xmlns:tools="http://schemas.android.com/tools"
                       android:orientation="vertical"
@@ -43,12 +44,13 @@
                     android:inputType="textNoSuggestions"
                     android:background="#10000000"
                     android:textColorHint="@color/note_hint_foreground"
-            />
+                    />
 
             <EditText
                     android:id="@+id/note_activity_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/note_title"
                     android:singleLine="true"
                     android:paddingLeft="@dimen/note_view_horizontal_margin"
                     android:paddingRight="@dimen/note_view_horizontal_margin"
@@ -56,20 +58,20 @@
                     android:paddingBottom="10dp"
                     android:textStyle="bold"
                     android:textSize="@dimen/nc_font_size"
-                    android:textColor="@color/note_foreground"
+                    android:textColor="#de000000"
                     android:textColorHint="@color/note_hint_foreground"
                     android:inputType="textCapSentences"
                     android:imeOptions="actionNext"
-                    android:focusable="true"
+                    android:autoText="false"
                     android:gravity="left"
-                    android:background="@color/darkblue"
-            />
+                    android:background="#25000000"
+                    />
 
             <!-- View inflated at runtime to show notes -->
             <ViewStub android:id="@+id/notes_view_stub"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-            />
+                    />
 
             <View
                     android:layout_width="fill_parent"
@@ -77,7 +79,7 @@
                     android:background="#11000000"
                     android:layout_marginRight="@dimen/note_view_horizontal_margin"
                     android:layout_marginLeft="@dimen/note_view_horizontal_margin"
-            />
+                    />
 
             <TextView
                     android:id="@+id/note_activity_edited"
@@ -90,7 +92,7 @@
                     android:paddingTop="@dimen/note_view_vertical_margin"
                     android:paddingBottom="@dimen/note_view_vertical_margin"
                     android:background="@android:color/transparent"
-            />
+                    />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

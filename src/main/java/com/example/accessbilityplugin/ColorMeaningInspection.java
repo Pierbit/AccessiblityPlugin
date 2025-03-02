@@ -26,7 +26,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString = tag.getAttributeValue("android:contentDescription");
 
                     if(testString == null || testString.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for imageView missing or empty", ProblemHighlightType.ERROR);
+                        holder.registerProblem(tag, "ContentDescription for imageView missing or empty", ProblemHighlightType.WARNING);
                     }
                 }
 
@@ -35,7 +35,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString = tag.getAttributeValue("android:contentDescription");
 
                     if(testString == null || testString.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for videoView missing or empty", ProblemHighlightType.ERROR);
+                        holder.registerProblem(tag, "ContentDescription for videoView missing or empty", ProblemHighlightType.WARNING);
                     }
 
                 }
@@ -46,7 +46,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString2 = tag.getAttributeValue("android:focusable");
 
                     if(testString1 == null || testString1.isEmpty()){
-                        holder.registerProblem(tag, "Hint for EditText missing or empty");
+                        holder.registerProblem(tag, "Hint for EditText missing or empty", ProblemHighlightType.WARNING);
                     }
                     if(testString2 == null || testString2.isEmpty()){
                         holder.registerProblem(tag, "Focusable attribute for EditText missing or empty", ProblemHighlightType.ERROR);
@@ -60,7 +60,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
                     String testString2 = tag.getAttributeValue("android:focusable");
 
                     if(testString1 == null || testString1.isEmpty()){
-                        holder.registerProblem(tag, "ContentDescription for button missing or empty", ProblemHighlightType.ERROR);
+                        holder.registerProblem(tag, "ContentDescription for button missing or empty", ProblemHighlightType.WARNING);
                     }
                     if(testString2 == null || testString2.isEmpty()){
                         holder.registerProblem(tag, "Focusable attribute for button missing or empty", ProblemHighlightType.ERROR);
@@ -71,7 +71,7 @@ public class ColorMeaningInspection extends LocalInspectionTool {
 
                     String test = tag.getAttributeValue("android:contentDescription");
                     if(test == null || test.isEmpty()){
-                        holder.registerProblem(tag,"ContentDescription for ImageButton missing or empty", ProblemHighlightType.ERROR);
+                        holder.registerProblem(tag,"ContentDescription for ImageButton missing or empty", ProblemHighlightType.WARNING);
                     }
                 }
             }

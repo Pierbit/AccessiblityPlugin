@@ -1,6 +1,7 @@
 package com.example.accessbilityplugin;
 
 import com.intellij.codeInspection.LocalInspectionTool;
+import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.openapi.editor.Document;
 import com.intellij.psi.*;
@@ -22,25 +23,28 @@ public class LabelsInspection extends LocalInspectionTool {
                 if (id != null && !(id.isEmpty())) {
 
                     int slashIndex = id.indexOf('/');
-                    String temp = id.substring(slashIndex+1);
+                    String temp = id.substring(slashIndex + 1);
 
                     XmlTag parent = tag.getParentTag();
-                    XmlTag[] children = parent.getSubTags();
+                    if (parent != null) {
+                        XmlTag[] children = parent.getSubTags();
 
-                    for(XmlTag child: children){
+                        for (XmlTag child : children) {
 
-                        String label = child.getAttributeValue("android:labelFor");
+                            String label = child.getAttributeValue("android:labelFor");
 
-                        if(label != null){
+                            if (label != null) {
 
-                            int slashIndex1 = label.indexOf('/');
-                            String temp1 = label.substring(slashIndex1+1);
+                                int slashIndex1 = label.indexOf('/');
+                                String temp1 = label.substring(slashIndex1 + 1);
 
-                            if(temp.equals(temp1)){
-                                int childline = getLine(child);
-                                if(childline > tagline) holder.registerProblem(child, "Label should come before the referenced tag");
+                                if (temp.equals(temp1)) {
+                                    int childline = getLine(child);
+                                    if (childline > tagline)
+                                        holder.registerProblem(child, "Label should come before the referenced tag", ProblemHighlightType.INFORMATION);
+                                }
+
                             }
-
                         }
                     }
                 }
